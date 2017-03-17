@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <memory.h>
 #include <string.h>
-//#include <arpa/inet.h>
+#include <arpa/inet.h>
 #include <fstream>
 #include <stdlib.h>
 #include <pthread.h>
@@ -331,12 +331,12 @@ using namespace std;
     void onRead(int iCliFd, short iEvent, void *arg)  
     {  
         int iLen;  
-        char buf[1500];  
+        char buf[1500]; 
       
-        iLen = recv(iCliFd, buf, 1500, 0);  
+        iLen = recv(iCliFd, buf, 1500, 0); 
       
-        if (iLen <= 0) {  
-            cout << "Client Close" << endl;  
+        if (iLen <= 0) { 
+            cout << "Client Close" << endl; 
       
             // 连接结束(=0)或连接错误(<0)，将事件删除并释放内存空间  
             struct event *pEvRead = (struct event*)arg;  
@@ -728,6 +728,8 @@ void class_heap_test(void) {
 }
 
 /**********max_min_deap_test***********/ //END
+
+namespace check_string_char_type {
 /**********check_string_char_type***********/
 #define CHAR_TYPE  1
 #define NUMBER_TYPE  2
@@ -776,6 +778,7 @@ void check_string_char_type_test(void) {
 	
 }
 /**********max_min_deap_test***********/ //END
+}
 /**********trie_tree_test***********/ 
 template <class T1, class T2>
 class TrieTreeNode {
